@@ -22,7 +22,11 @@ export function getErrorMessage(
   }
 
   if (error?.code === 'ERR_NETWORK') {
-    return 'Cannot reach the server. Make sure the backend is running on :8000.'
+    return (
+      "The backend is hosted on a free tier that sleeps after inactivity, so " +
+      'the first request may take 30–60 seconds to wake it up. Please wait a ' +
+      "moment and try again — this isn't an error with the app."
+    )
   }
 
   return fallback
