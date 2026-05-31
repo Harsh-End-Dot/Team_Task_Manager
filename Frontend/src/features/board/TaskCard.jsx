@@ -11,7 +11,7 @@ import { LabelChip } from './LabelChip'
 const MAX_CHIPS = 3
 
 /** Presentational card - used both inside the column and in the DragOverlay. */
-export function TaskCardView({ task, me, dragging = false, overlay = false }) {
+export function TaskCardView({ task, me, directory, dragging = false, overlay = false }) {
   const due = formatDue(task.due_date)
   const subtasks = task.subtasks ?? []
   const doneSubtasks = subtasks.filter((s) => s.is_done).length
@@ -59,7 +59,11 @@ export function TaskCardView({ task, me, dragging = false, overlay = false }) {
           </span>
         )}
         <span className="ml-auto">
-          <AssigneeAvatar assigneeId={task.assignee_id} me={me} />
+          <AssigneeAvatar
+            assigneeId={task.assignee_id}
+            me={me}
+            directory={directory}
+          />
         </span>
       </div>
     </div>
@@ -67,7 +71,7 @@ export function TaskCardView({ task, me, dragging = false, overlay = false }) {
 }
 
 /** Sortable wrapper: draggable in a column, clickable to open the detail view. */
-export function SortableTaskCard({ task, me, onOpen }) {
+export function SortableTaskCard({ task, me, directory, onOpen }) {
   const {
     attributes,
     listeners,
@@ -95,7 +99,7 @@ export function SortableTaskCard({ task, me, onOpen }) {
         if (e.key === 'Enter') onOpen?.(task)
       }}
     >
-      <TaskCardView task={task} me={me} dragging={isDragging} />
+      <TaskCardView task={task} me={me} directory={directory} dragging={isDragging} />
     </div>
   )
 }

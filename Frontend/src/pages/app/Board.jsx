@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useState } from 'react'
+import { lazy, Suspense, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
   DndContext,
@@ -77,6 +77,13 @@ export default function Board() {
   const projectsQuery = useProjects(currentWorkspaceId)
   const { data: members } = useMembers(currentWorkspaceId)
   const { data: labels = [] } = useLabels(currentWorkspaceId)
+
+  // userId -> { name, email } so cards can show the assignee's name, not an id.
+  const directory = useMemo(() => {
+    const map = {}
+    for (const m of members ?? []) if (m.user) map[m.user_id] = m.user
+    return map
+  }, [members])
 
   const projects = projectsQuery.data ?? []
   // Deep link from the Projects page: /app/board?project=<id> preselects it.
@@ -299,6 +306,7 @@ export default function Board() {
                 status={status}
                 tasks={columns[status]}
                 me={me}
+                directory={directory}
                 canAdd={isAdmin}
                 onOpenTask={setDetailTask}
                 onAddTask={openCreate}
@@ -311,6 +319,7 @@ export default function Board() {
               <TaskCardView
                 task={findTaskById(columns, activeId)}
                 me={me}
+                directory={directory}
                 overlay
               />
             ) : null}

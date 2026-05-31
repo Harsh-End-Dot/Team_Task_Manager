@@ -11,10 +11,11 @@ function hueFromId(id) {
 }
 
 /**
- * Assignee avatar. The backend doesn't expose member names here (Phase 9), so we
- * only have a real name for the current user - others get a coloured glyph.
+ * Assignee avatar. Resolves the assignee's name from `directory` (a map of
+ * userId -> { name, email }, built from the workspace members) or from the
+ * current user, falling back to a glyph only when the name is unknown.
  */
-export function AssigneeAvatar({ assigneeId, me, size = 'sm', className }) {
+export function AssigneeAvatar({ assigneeId, me, directory, size = 'sm', className }) {
   const dim = size === 'sm' ? 'size-6 text-[10px]' : 'size-8 text-xs'
 
   if (!assigneeId) {
@@ -33,10 +34,17 @@ export function AssigneeAvatar({ assigneeId, me, size = 'sm', className }) {
   }
 
   const isMe = me && assigneeId === me.id
+  const resolved = isMe ? me : directory?.[assigneeId]
+  const name = resolved?.name || resolved?.email || ''
   const hue = hueFromId(assigneeId)
+  const title = isMe
+    ? 'Assigned to you'
+    : name
+      ? `Assigned to ${name}`
+      : 'Assigned'
   return (
     <span
-      title={isMe ? 'Assigned to you' : 'Assigned'}
+      title={title}
       className={cn(
         'flex items-center justify-center rounded-full font-semibold text-white ring-1 ring-white/15',
         dim,
@@ -46,7 +54,7 @@ export function AssigneeAvatar({ assigneeId, me, size = 'sm', className }) {
         background: `linear-gradient(135deg, hsl(${hue} 65% 52%), hsl(${(hue + 40) % 360} 65% 45%))`,
       }}
     >
-      {isMe ? initials(me.name || me.email) : <User className="size-3.5" />}
+      {name ? initials(name) : <User className="size-3.5" />}
     </span>
   )
 }

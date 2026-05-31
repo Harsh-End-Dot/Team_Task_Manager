@@ -46,7 +46,8 @@ export function CreateTaskDialog({
 
 function memberLabel(m, me) {
   if (me && m.user_id === me.id) return 'You'
-  return `Member ${m.user_id.slice(0, 8)}`
+  // Members carry a nested `user` object (name + email); see Team page / MemberCard.
+  return m.user?.name || m.user?.email || `Member ${m.user_id.slice(0, 8)}`
 }
 
 function CreateTaskForm({

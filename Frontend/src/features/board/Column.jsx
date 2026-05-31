@@ -7,7 +7,7 @@ import { STATUS_META } from '@/features/dashboard/meta'
 import { SortableTaskCard } from './TaskCard'
 
 /** One Kanban column: a droppable container wrapping a sortable task list. */
-export function Column({ status, tasks, me, canAdd = false, onOpenTask, onAddTask }) {
+export function Column({ status, tasks, me, directory, canAdd = false, onOpenTask, onAddTask }) {
   const { setNodeRef, isOver } = useDroppable({ id: status })
   const meta = STATUS_META[status] ?? STATUS_META.TODO
 
@@ -47,6 +47,7 @@ export function Column({ status, tasks, me, canAdd = false, onOpenTask, onAddTas
               key={task.id}
               task={task}
               me={me}
+              directory={directory}
               onOpen={onOpenTask}
             />
           ))}
