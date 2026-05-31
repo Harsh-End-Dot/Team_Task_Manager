@@ -1,0 +1,8 @@
+export { Navbar } from './Navbar'
+export { Hero } from './Hero'
+export { HeroBackground } from './HeroBackground'
+export { DashboardPreview } from './DashboardPreview'
+export { Features } from './Features'
+export { ProductHighlight } from './ProductHighlight'
+export { FinalCTA } from './FinalCTA'
+export { Footer } from './Footer'

@@ -1,0 +1,35 @@
+# Python / build cruft. Note: Docker .dockerignore needs **/ to match nested
+# paths (unlike .gitignore), so use **/ for recursive patterns.
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets / local env
+.env
+*.env
+
+# Tests + dev-only tooling (not needed in the runtime image)
+tests/
+pytest.ini
+requirements-dev.txt
+
+# Docker meta
+Dockerfile
+Dockerfile.*
+.dockerignore
+
+# Dev/docs files — defense in depth. These live at the repo ROOT (outside this
+# backend/ build context) and must NEVER enter the image (CLAUDE.md hygiene).
+CLAUDE.md
+PROGRESS.md
+tasks/
+Tasks/
+*.md
+.git/
+.gitignore

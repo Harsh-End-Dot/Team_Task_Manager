@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+alembic
+pydantic
+pydantic[email]
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+# passlib 1.7.4 (latest, unmaintained) is incompatible with bcrypt >= 4.1:
+# bcrypt 5.x makes passlib's backend self-test raise on a >72-byte probe.
+# 4.0.1 is the last compatible release and ships an abi3 wheel (works on 3.14).
+bcrypt==4.0.1
+python-multipart
+slowapi

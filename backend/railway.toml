@@ -1,0 +1,38 @@
+# Railway config for the Team Task Manager backend service.
+#
+# Setup in the Railway dashboard:
+#   1. Add a PostgreSQL plugin to the project (provides DATABASE_URL).
+#   2. Create a service from this repo and set its Root Directory to `backend`
+#      so this file and the Dockerfile are picked up.
+#   3. Set the environment variables listed below.
+#
+# Migrations run automatically on each deploy (the start command applies
+# `alembic upgrade head` before starting the server).
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "sh -c 'alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT'"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+healthcheckPath = "/health"
+
+# ---------------------------------------------------------------------------
+# Required environment variables (set these in the Railway service > Variables):
+#
+#   DATABASE_URL                 Provided by the Railway Postgres plugin as
+#                                postgres://... — the app auto-rewrites it to the
+#                                asyncpg driver (app/core/config.py).
+#                                Reference it as ${{ Postgres.DATABASE_URL }}.
+#   JWT_SECRET                   A long random secret (e.g. `openssl rand -hex 32`).
+#   JWT_ALGORITHM                HS256 (default).
+#   ACCESS_TOKEN_EXPIRE_MINUTES  e.g. 60.
+#   FRONTEND_URL                 Public URL of the frontend, used in invite/reset links.
+#
+# Optional (email; if EMAIL_API_KEY is unset, emails are logged instead of sent):
+#   EMAIL_PROVIDER               "resend" or "sendgrid".
+#   EMAIL_API_KEY                Provider API key.
+#   EMAIL_FROM                   Verified sender address.
+# ---------------------------------------------------------------------------
