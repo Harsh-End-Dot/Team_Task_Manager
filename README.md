@@ -10,10 +10,10 @@ TaskFlow is a project and task management app I built end to end. Teams sign up,
 
 ## Live Demo
 
-- **Frontend:** https://taskflow-seven-lovat.vercel.app
-- **API docs (Swagger UI):** `<ADD-BACKEND-URL>/docs` _(replace with your Render backend URL)_
+- **Frontend:** `https://taskflow-git-main-harshgupta7739-5802s-projects.vercel.app/`
+- **API docs (Swagger UI):** `https://team-task-manager-api-mj72.onrender.com/docs`
 
-> ⚠️ **Heads up — the backend sleeps when idle.** The API runs on a free tier that spins down after inactivity, so the **first request can take ~30–60 seconds** to wake the server. Once it's warm, everything is fast. If the login screen seems to hang on the first try, give it a moment and retry.
+> ⚠️ **Heads up - the backend sleeps when idle.** The API runs on a free tier that spins down after inactivity, so the **first request can take ~30–60 seconds** to wake the server. Once it's warm, everything is fast. If the login screen seems to hang on the first try, give it a moment and retry.
 
 **Demo login** _(available when the production database has been seeded)_:
 
@@ -59,25 +59,25 @@ TaskFlow is a project and task management app I built end to end. Teams sign up,
 ## Tech Stack
 
 ### Backend
-- **[FastAPI](https://fastapi.tiangolo.com/)** — async web framework
+- **[FastAPI](https://fastapi.tiangolo.com/)** - async web framework
 - **PostgreSQL** with **async SQLAlchemy** (`sqlalchemy[asyncio]` + `asyncpg`)
-- **Alembic** — database migrations
-- **Pydantic v2** + **pydantic-settings** — schemas, validation, and config
-- **python-jose** + **passlib[bcrypt]** — JWT auth and password hashing
-- **WebSockets** — native FastAPI/Starlette WebSocket support for real-time broadcast
-- **slowapi** — rate limiting
-- **Uvicorn** — ASGI server
-- **pytest** + **pytest-asyncio** + **httpx** — async test suite
+- **Alembic** - database migrations
+- **Pydantic v2** + **pydantic-settings** - schemas, validation, and config
+- **python-jose** + **passlib[bcrypt]** - JWT auth and password hashing
+- **WebSockets** - native FastAPI/Starlette WebSocket support for real-time broadcast
+- **slowapi** - rate limiting
+- **Uvicorn** - ASGI server
+- **pytest** + **pytest-asyncio** + **httpx** - async test suite
 
 ### Frontend
 - **React 19** + **Vite** (JavaScript, not TypeScript)
 - **Tailwind CSS** + **shadcn/ui** (Radix primitives, `lucide-react` icons)
-- **TanStack Query** (React Query) — server state, caching, and optimistic updates
-- **React Router** — client-side routing
-- **Framer Motion** — animations
-- **@dnd-kit** (`core` / `sortable` / `utilities`) — drag-and-drop on the board
-- **Recharts** — dashboard charts
-- **axios** — HTTP client
+- **TanStack Query** (React Query) - server state, caching, and optimistic updates
+- **React Router** - client-side routing
+- **Framer Motion** - animations
+- **@dnd-kit** (`core` / `sortable` / `utilities`) - drag-and-drop on the board
+- **Recharts** - dashboard charts
+- **axios** - HTTP client
 
 > Versions are pinned in [`backend/requirements.txt`](backend/requirements.txt) and [`Frontend/package.json`](Frontend/package.json).
 
