@@ -10,8 +10,8 @@ TaskFlow is a project and task management app I built end to end. Teams sign up,
 
 ## Live Demo
 
-- **Frontend:** `https://taskflow-git-main-harshgupta7739-5802s-projects.vercel.app/`
-- **API docs (Swagger UI):** `https://team-task-manager-api-mj72.onrender.com/docs`
+- **Frontend:** https://taskflow-git-main-harshgupta7739-5802s-projects.vercel.app/
+- **API docs (Swagger UI):** https://team-task-manager-api-mj72.onrender.com/docs
 
 > ⚠️ **Heads up - the backend sleeps when idle.** The API runs on a free tier that spins down after inactivity, so the **first request can take ~30–60 seconds** to wake the server. Once it's warm, everything is fast. If the login screen seems to hang on the first try, give it a moment and retry.
 
@@ -42,17 +42,17 @@ TaskFlow is a project and task management app I built end to end. Teams sign up,
 
 ## Key Features
 
-- **Authentication** — JWT-based login/signup, with a password-reset flow (request + confirm via emailed reset link).
-- **Multi-tenant workspaces** — every team gets an isolated workspace; all data is scoped so workspaces never see each other's projects, tasks, or members.
-- **Role-based access control** — two roles per membership, **Admin** and **Member**, with a guard that prevents removing or demoting the last admin.
-- **Projects with soft-delete** — projects (and their tasks) are soft-deleted into a trash and can be restored, so nothing is lost by accident.
-- **Kanban board** — drag-and-drop across To Do / In Progress / Done columns with an optimistic UI, so cards move instantly and reconcile with the server in the background.
-- **Rich tasks** — assignee, status, priority (Low/Medium/High), due dates, checklist subtasks, and color-coded labels.
-- **Comments with @mentions** — threaded task discussion that records who was mentioned.
-- **Dashboard** — workspace stats and a status breakdown chart (overdue / due-today highlights included).
-- **Real-time updates** — changes broadcast over WebSockets so every open client updates live without a refresh.
-- **Email invitations** — invite teammates by email, with a **shareable invite link** as a fallback when email isn't configured.
-- **Rate limiting** — the email-sending endpoints (invitations, password reset) are throttled to protect the limited free email quota, plus a per-workspace cap on pending invitations.
+- **Authentication** - JWT-based login/signup, with a password-reset flow (request + confirm via emailed reset link).
+- **Multi-tenant workspaces** - every team gets an isolated workspace; all data is scoped so workspaces never see each other's projects, tasks, or members.
+- **Role-based access control** - two roles per membership, **Admin** and **Member**, with a guard that prevents removing or demoting the last admin.
+- **Projects with soft-delete** - projects (and their tasks) are soft-deleted into a trash and can be restored, so nothing is lost by accident.
+- **Kanban board** - drag-and-drop across To Do / In Progress / Done columns with an optimistic UI, so cards move instantly and reconcile with the server in the background.
+- **Rich tasks** - assignee, status, priority (Low/Medium/High), due dates, checklist subtasks, and color-coded labels.
+- **Comments with @mentions** - threaded task discussion that records who was mentioned.
+- **Dashboard** - workspace stats and a status breakdown chart (overdue / due-today highlights included).
+- **Real-time updates** - changes broadcast over WebSockets so every open client updates live without a refresh.
+- **Email invitations** - invite teammates by email, with a **shareable invite link** as a fallback when email isn't configured.
+- **Rate limiting** - the email-sending endpoints (invitations, password reset) are throttled to protect the limited free email quota, plus a per-workspace cap on pending invitations.
 
 ---
 
